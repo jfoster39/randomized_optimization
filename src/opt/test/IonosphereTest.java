@@ -18,7 +18,7 @@ import java.text.*;
 public class IonosphereTest {
     private static Instance[] instances = initializeInstances();
 
-    private static int inputLayer = 34, hiddenLayer = 5, outputLayer = 1, trainingIterations = 500;
+    private static int inputLayer = 34, hiddenLayer = 5, outputLayer = 1, trainingIterations = 5000;
     private static BackPropagationNetworkFactory factory = new BackPropagationNetworkFactory();
 
     private static ErrorMeasure measure = new SumOfSquaresError();
@@ -92,8 +92,9 @@ public class IonosphereTest {
             }
         }
 
+        results +=  "\n MEAN RESULTS OVER 5 ITERATIONS WITH " + trainingIterations +  " TRAINING ITERATIONS ************\n";
+
         // Calculate mean values for output
-        double[] means = new double[3];
         for(int i = 0; i < 3; i++){
             double sum_correct_classification   = 0.0;
             double sum_training_times           = 0.0;
@@ -108,8 +109,7 @@ public class IonosphereTest {
             double mean_training_time           = sum_training_times / 5;
             double mean_testing_time            = sum_testing_times / 5;
 
-            results +=  "\n MEAN RESULTS OVER 5 ITERATIONS ************ " +
-                        "\nResults for " + oaNames[i] + " instances.\nPercent correctly classified: "
+            results +=  "\nResults for " + oaNames[i] + " instances.\nPercent correctly classified: "
                         + df.format(mean_correct_classification) + "%\nTraining time: " + df.format(mean_training_time)
                         + " seconds\nTesting time: " + df.format(mean_testing_time) + " seconds\n";
         }
