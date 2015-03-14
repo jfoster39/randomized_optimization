@@ -1,3 +1,5 @@
+package opt.test;
+
 import java.util.Arrays;
 import java.util.Random;
 import dist.DiscreteDependencyTree;
@@ -35,7 +37,7 @@ public class KnapsackProblem {
     /** The maximum volume for a single element */
     private static final double MAX_VOLUME = 50;
     /** The volume of the knapsack */
-    private static final double KNAPSACK_VOLUME = 
+    private static final double KNAPSACK_VOLUME =
          MAX_VOLUME * NUM_ITEMS * COPIES_EACH * .4;
     /**
      * The test main
@@ -57,35 +59,35 @@ public class KnapsackProblem {
         NeighborFunction nf = new DiscreteChangeOneNeighbor(ranges);
         MutationFunction mf = new DiscreteChangeOneMutation(ranges);
         CrossoverFunction cf = new UniformCrossOver();
-        Distribution df = new DiscreteDependencyTree(.1, ranges); 
+        Distribution df = new DiscreteDependencyTree(.1, ranges);
         HillClimbingProblem hcp = new GenericHillClimbingProblem(ef, odd, nf);
         GeneticAlgorithmProblem gap = new GenericGeneticAlgorithmProblem(ef, odd, mf, cf);
         ProbabilisticOptimizationProblem pop = new GenericProbabilisticOptimizationProblem(ef, odd, df);
         long start;
-        
+
         for (int i = 0; i < 10; i++) {
         	System.out.println(i);
 	        start = System.currentTimeMillis();
-	        RandomizedHillClimbing rhc = new RandomizedHillClimbing(hcp);      
+	        RandomizedHillClimbing rhc = new RandomizedHillClimbing(hcp);
 	        FixedIterationTrainer fit = new FixedIterationTrainer(rhc, 200000);
 	        fit.train();
 	        System.out.println(ef.value(rhc.getOptimal()));
 	        System.out.println("Runtime: " + (System.currentTimeMillis() - start));
-	        
+
 	        start = System.currentTimeMillis();
 	        SimulatedAnnealing sa = new SimulatedAnnealing(100, .95, hcp);
 	        fit = new FixedIterationTrainer(sa, 200000);
 	        fit.train();
 	        System.out.println(ef.value(sa.getOptimal()));
 	        System.out.println("Runtime: " + (System.currentTimeMillis() - start));
-	        
+
 	        start = System.currentTimeMillis();
 	        StandardGeneticAlgorithm ga = new StandardGeneticAlgorithm(200, 150, 25, gap);
 	        fit = new FixedIterationTrainer(ga, 1000);
 	        fit.train();
 	        System.out.println(ef.value(ga.getOptimal()));
 	        System.out.println("Runtime: " + (System.currentTimeMillis() - start));
-	        
+
 	        start = System.currentTimeMillis();
 	        MIMIC mimic = new MIMIC(200, 100, pop);
 	        fit = new FixedIterationTrainer(mimic, 1000);
