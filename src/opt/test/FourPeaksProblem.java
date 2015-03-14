@@ -62,7 +62,7 @@ public class FourPeaksProblem {
         double[] mimic_optimal  = new double[10];
 
         for (int i = 0; i < 10; i++) {
-        	System.out.println(i);
+        	System.out.println("Iteration " + i);
 	        start = System.currentTimeMillis();
 	        RandomizedHillClimbing rhc = new RandomizedHillClimbing(hcp);
 	        FixedIterationTrainer fit = new FixedIterationTrainer(rhc, 200000);
