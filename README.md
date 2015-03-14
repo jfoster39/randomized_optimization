@@ -8,7 +8,7 @@
     ant
     java -cp ABAGAIL.jar opt.test.IonosphereTest 
 
-Note that for ant versions 1.9.3 or earlier, you need to remove 
+Note that for ant versions 1.9.3 or later, you need to add the following to build.xml 
 
     additionalparam="subpackages" 
 
