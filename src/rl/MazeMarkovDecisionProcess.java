@@ -13,12 +13,12 @@ import dist.Distribution;
 public class MazeMarkovDecisionProcess implements MarkovDecisionProcess {
     /** The default failure probability */
     private static final double FAILURE_PROBABILITY = .01;
-    
+
     /** The reward for solving the maze */
 	private static final int REWARD = 100;
-	
+
 	/** The number of actions */
-    public static final int ACTIONS = 4;    
+    public static final int ACTIONS = 4;
     /** The move up action */
     public static final int MOVE_UP = 0;
     /** The move down action */
@@ -27,7 +27,7 @@ public class MazeMarkovDecisionProcess implements MarkovDecisionProcess {
     public static final int MOVE_LEFT = 2;
     /** The move right action */
     public static final int MOVE_RIGHT = 3;
-   
+
     /** The character representing an empty square */
     public static final char EMPTY = ' ';
     /** The character representing a closed square */
@@ -36,7 +36,7 @@ public class MazeMarkovDecisionProcess implements MarkovDecisionProcess {
     public static final char AGENT = 'o';
     /** The character representing the goal */
     public static final char GOAL = 'x';
-    
+
     /**
      * The maze itself
      */
@@ -53,7 +53,7 @@ public class MazeMarkovDecisionProcess implements MarkovDecisionProcess {
      * The initial state
      */
     private int initial;
-    
+
     /**
      * Make a new maze markov decision process
      * @param maze the maze itself
@@ -243,7 +243,7 @@ public class MazeMarkovDecisionProcess implements MarkovDecisionProcess {
     public boolean isTerminalState(int state) {
         return state == goal;
     }
-    
+
     /**
      * Load a maze from a text file
      * @param fileName the file to read from
@@ -286,7 +286,7 @@ public class MazeMarkovDecisionProcess implements MarkovDecisionProcess {
         return new MazeMarkovDecisionProcess(maze, goalX, goalY,
                 initialX, initialY, FAILURE_PROBABILITY);
     }
-    
+
     /**
      * Return a string representation
      * @return the string representation
@@ -308,7 +308,7 @@ public class MazeMarkovDecisionProcess implements MarkovDecisionProcess {
             ret += "\n";
         }
         return ret;
-    }    
-    
+    }
+
 
 }
